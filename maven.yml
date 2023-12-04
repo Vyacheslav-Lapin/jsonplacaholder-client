@@ -1,0 +1,4 @@
+maven.compiler:
+  forceJavacCompilerUse: true
+  showWarnings: true
+  showDeprecation: true
