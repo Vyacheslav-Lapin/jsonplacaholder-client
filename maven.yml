@@ -2,3 +2,9 @@ maven.compiler:
   forceJavacCompilerUse: true
   showWarnings: true
   showDeprecation: true
+
+lombok:
+  sourceDirectory: src/main/java
+  testSourceDirectory: src/test/java
+  outputDirectory: target/generated-sources/delomboked
+  testOutputDirectory: target/generated-test-sources/delomboked
