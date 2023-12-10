@@ -9,7 +9,7 @@ Building the API client library requires [Maven](https://maven.apache.org/) to b
 To install the API client library to your local Maven repository, simply execute:
 
 ```shell
-mvn install
+mvn
 ```
 
 To deploy it to a remote Maven repository instead, configure the settings of the repository and execute:
@@ -28,8 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>pro.vlapin.experiments</groupId>
     <artifactId>jsonplacaholder-client</artifactId>
-    <version>0.0.1</version>
-    <scope>compile</scope>
+    <version>0.0.1-2</version>
 </dependency>
 ```
 

@@ -1,14 +1,17 @@
 package pro.vlapin.experiments.jsonplacaholder.client.model;
 
-import io.swagger.v3.oas.annotations.media.Schema;
+import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.NOT_REQUIRED;
 
-import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.*;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Value;
 
 /**
  * Company
  */
-public record Company(
-    @Schema(requiredMode = NOT_REQUIRED) String name,
-    @Schema(requiredMode = NOT_REQUIRED) String catchPhrase,
-    @Schema(requiredMode = NOT_REQUIRED) String bs) {
+@Value
+@SuppressWarnings({"java:S125", "ClassCanBeRecord"})
+public class Company { //public record Company(
+    @Schema(requiredMode = NOT_REQUIRED) String name; //,
+    @Schema(requiredMode = NOT_REQUIRED) String catchPhrase; //,
+    @Schema(requiredMode = NOT_REQUIRED) String bs; //) {
 }

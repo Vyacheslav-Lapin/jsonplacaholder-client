@@ -1,10 +1,24 @@
-maven.compiler:
-  forceJavacCompilerUse: true
-  showWarnings: true
-  showDeprecation: true
+root.package: pro.vlapin.experiments.jsonplacaholder.client
+
+# https://www.mojohaus.org/versions/versions-maven-plugin/update-properties-mojo.html#generateBackupPoms
+generateBackupPoms: false
+
+maven:
+  # https://www.mojohaus.org/versions/versions-maven-plugin/update-properties-mojo.html#rulesUri
+  version.rules: file://${maven.multiModuleProjectDirectory}/ruleset.xml
+  compiler:
+    forceJavacCompilerUse: true
+    showWarnings: true
+    showDeprecation: true
 
 lombok:
   sourceDirectory: src/main/java
   testSourceDirectory: src/test/java
   outputDirectory: target/generated-sources/delomboked
   testOutputDirectory: target/generated-test-sources/delomboked
+
+# https://github.com/assertj/assertj-assertions-generator-maven-plugin
+assertj:
+  generate.JUnitSoftAssertions: false
+  packages:
+    - ${root.package}.model
