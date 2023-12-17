@@ -2,5 +2,6 @@ jdk:
   - openjdk
     21
 before_install:
-  - sdk install java 21-amzn
-  - sdk use java 21-amzn
+  - sdk update
+  - sdk install java 21.0.1-amzn
+  - sdk use java 21.0.1-amzn
