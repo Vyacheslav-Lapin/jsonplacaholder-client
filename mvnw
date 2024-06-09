@@ -299,12 +299,31 @@ export MAVEN_CMD_LINE_ARGS
 
 WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
 
+# https://stackoverflow.com/questions/36852819/pipe-out-a-substring-by-removing-the-last-n-characters
+pipe_substr() {
+  sed "s/.\{$1\}$//"
+}
+
+# concatenates all lines of a file to compliant maven environment variables cli parameters (ignoring comments)
+concat_vars() {
+  if [ -s "$1" ]; then
+    echo "-D$(cat $1 | grep -v '^#' | tr -s '\n' '|' | sed 's/|/ -D/g' | pipe_substr 3)"
+  fi
+}
+
+ENV_FILE="$MAVEN_PROJECTBASEDIR/.mvn/.env"
+if [ -s "$ENV_FILE" ]; then
+    ENV_VARIABLES="$(concat_vars "$ENV_FILE") $ENV_VARIABLES"
+    export MAVEN_CONFIG=$(echo "$ENV_VARIABLES $MAVEN_CONFIG" | xargs)
+fi
+#echo "Is $ENV_FILE present and not empty? - $([ -s "$ENV_FILE" ] && echo true || echo false)"
+#echo "MAVEN_CONFIG = '$MAVEN_CONFIG'"
+
 # shellcheck disable=SC2086 # safe args
 exec "$JAVACMD" \
   $MAVEN_OPTS \
   $MAVEN_DEBUG_OPTS \
   -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \
   "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
-  "-DsourceDirectory=target/generated-sources/delomboked" \
+  "-Dmaven.sourceDirectory=target/generated-sources/delomboked" \
   ${WRAPPER_LAUNCHER} $MAVEN_CONFIG "$@"
-#  "-DsourceDirectory=$(yq .lombok.outputDirectory maven.yml)" \

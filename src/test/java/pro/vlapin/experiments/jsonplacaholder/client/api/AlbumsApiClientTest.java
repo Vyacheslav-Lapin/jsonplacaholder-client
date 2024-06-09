@@ -1,6 +1,7 @@
 package pro.vlapin.experiments.jsonplacaholder.client.api;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.InstanceOfAssertFactories.*;
 
 import lombok.RequiredArgsConstructor;
 import lombok.val;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
 import pro.vlapin.experiments.jsonplacaholder.client.JsonPlaceholderClientConfig;
+import pro.vlapin.experiments.jsonplacaholder.client.model.Album;
 import pro.vlapin.experiments.jsonplacaholder.client.model.AlbumAssert;
 
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
@@ -36,8 +38,7 @@ class AlbumsApiClientTest {
         .isNotNull()
         .matches(__ -> albumListResponseEntity.getStatusCode().is2xxSuccessful())
         .matches(__ -> albumListResponseEntity.getStatusCode().value() == 200)
-        .extracting(HttpEntity::getBody)
-        .asList()
+        .extracting(HttpEntity::getBody, list(Album.class))
         .isNotEmpty()
         .hasSize(SIZE);
   }

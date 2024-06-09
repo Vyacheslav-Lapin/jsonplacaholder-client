@@ -7,15 +7,15 @@ maven:
   # https://www.mojohaus.org/versions/versions-maven-plugin/update-properties-mojo.html#rulesUri
   version.rules: file://${maven.multiModuleProjectDirectory}/ruleset.xml
   compiler:
-    forceJavacCompilerUse: true
+    forceLegacyJavacApi: true
     showWarnings: true
     showDeprecation: true
 
-lombok:
-  sourceDirectory: src/main/java
-  testSourceDirectory: src/test/java
-  outputDirectory: target/generated-sources/delomboked
-  testOutputDirectory: target/generated-test-sources/delomboked
+#lombok:
+#  sourceDirectory: ${project.basedir}/src/main/java
+#  testSourceDirectory: ${project.basedir}/src/test/java
+#  outputDirectory: ${project.build.directory}/generated-sources/delomboked
+#  testOutputDirectory: ${project.build.directory}/generated-test-sources/delomboked
 
 # https://github.com/assertj/assertj-assertions-generator-maven-plugin
 assertj:

@@ -1,5 +1,7 @@
 package pro.vlapin.experiments.jsonplacaholder.client.api;
 
+import static org.springframework.http.MediaType.*;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -10,6 +12,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
+import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,10 +25,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import pro.vlapin.experiments.jsonplacaholder.client.model.Album;
 import pro.vlapin.experiments.jsonplacaholder.client.model.Photo;
-
-import java.util.List;
-
-import static org.springframework.http.MediaType.*;
 
 @Validated
 @Tag(name = "album",
@@ -58,7 +57,7 @@ public interface AlbumsApi {
 
   /**
    * POST /albums/{id}/photos : Create a photo
-   * Important - photo will not be really created on the server but it will be faked as if
+   * <p>Important - photo will not be really created on the server but it will be faked as if</p>
    *
    * @param id    (required)
    * @param photo (required)

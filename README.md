@@ -1,5 +1,5 @@
 # jsonplacaholder-client
-
+[![](https://jitpack.io/v/Vyacheslav-Lapin/jsonplacaholder-client.svg)](https://jitpack.io/#Vyacheslav-Lapin/jsonplacaholder-client)
 ## Requirements
 
 Building the API client library requires [Maven](https://maven.apache.org/) to be installed.
@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>pro.vlapin.experiments</groupId>
     <artifactId>jsonplacaholder-client</artifactId>
-    <version>0.0.1-2</version>
+    <version>0.0.1-7</version>
 </dependency>
 ```
 
@@ -37,16 +37,17 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "pro.vlapin.experiments:jsonplacaholder-client:0.0.1"
+compile "pro.vlapin.experiments:jsonplacaholder-client:0.0.1-8"
 ```
 
 ### Others
 
 At first generate the JAR by executing:
-
+```shell
 mvn package
+```
 
 Then manually install the following JARs:
 
-* target/jsonplacaholder-client-0.0.1.jar
+* target/jsonplacaholder-client-0.0.1-8.jar
 * target/lib/*.jar

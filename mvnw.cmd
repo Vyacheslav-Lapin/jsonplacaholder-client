@@ -1,3 +1,5 @@
+FOR /F "tokens=*" %%i in ("type .env") do SET %%i
+
 @REM ----------------------------------------------------------------------------
 @REM Licensed to the Apache Software Foundation (ASF) under one
 @REM or more contributor license agreements.  See the NOTICE file
@@ -153,6 +155,8 @@ if exist %WRAPPER_JAR% (
 )
 @REM End of extension
 
+for /f "tokens=*" %%A in ('""findstr" /R "^^[^^#]" .mvn\.env"') do call :concat " -Denv.%%A"
+
 @REM If specified, validate the SHA-256 sum of the Maven wrapper jar file
 SET WRAPPER_SHA_256_SUM=""
 FOR /F "usebackq tokens=1,2 delims==" %%A IN ("%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.properties") DO (
@@ -181,6 +185,8 @@ set MAVEN_CMD_LINE_ARGS=%*
   %MAVEN_DEBUG_OPTS% ^
   -classpath %WRAPPER_JAR% ^
   "-Dmaven.multiModuleProjectDirectory=%MAVEN_PROJECTBASEDIR%" ^
+  "-Dmaven.sourceDirectory=target\generated-sources\delomboked" ^
+  "-Dmaven.source=%MAVEN_PROJECTBASEDIR%" ^
   %WRAPPER_LAUNCHER% %MAVEN_CONFIG% %*
 if ERRORLEVEL 1 goto error
 goto end
